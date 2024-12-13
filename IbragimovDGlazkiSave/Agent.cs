@@ -39,9 +39,72 @@ namespace IbragimovDGlazkiSave
             {
                 return AgentType.Title;
             }
+            //set
+            //{
+            //    switch (value)
+            //    {
+            //        case "МФО":
+            //            this.AgentTypeID = 1;
+            //            break;
+            //        case "ООО":
+            //            this.AgentTypeID = 2;
+            //            break;
+            //        case "ЗАО":
+            //            this.AgentTypeID = 3;
+            //            break;
+            //        case "МКК":
+            //            this.AgentTypeID = 4;
+            //            break;
+            //        case "ОАО":
+            //            this.AgentTypeID = 5;
+            //            break;
+            //        case "ПАО":
+            //            this.AgentTypeID = 6;
+            //            break;
+            //    }
+            //}
             }
 
-    
+        public decimal Prod
+        {
+            get
+            {
+                decimal p = 0;
+                foreach (ProductSale sales in ProductSale)
+                {
+                    p = p + sales.Stoimost;
+                }
+                return p;
+            }
+        }
+
+        public int Discount
+        {
+            get
+            {
+                if (Prod < 10000)
+                {
+                    return 0;
+                }
+                if (Prod < 50000)
+                {
+                    return 5;
+                }
+                if (Prod < 150000)
+                {
+                    return 10;
+                }
+                if (Prod < 500000)
+                {
+                    return 20;
+                }
+
+                return 25;
+
+            }
+        }
+
+
         public virtual AgentType AgentType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AgentPriorityHistory> AgentPriorityHistory { get; set; }
