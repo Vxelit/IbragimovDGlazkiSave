@@ -11,7 +11,8 @@ namespace IbragimovDGlazkiSave
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows.Media;
+
     public partial class Agent
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -39,30 +40,6 @@ namespace IbragimovDGlazkiSave
             {
                 return AgentType.Title;
             }
-            //set
-            //{
-            //    switch (value)
-            //    {
-            //        case "МФО":
-            //            this.AgentTypeID = 1;
-            //            break;
-            //        case "ООО":
-            //            this.AgentTypeID = 2;
-            //            break;
-            //        case "ЗАО":
-            //            this.AgentTypeID = 3;
-            //            break;
-            //        case "МКК":
-            //            this.AgentTypeID = 4;
-            //            break;
-            //        case "ОАО":
-            //            this.AgentTypeID = 5;
-            //            break;
-            //        case "ПАО":
-            //            this.AgentTypeID = 6;
-            //            break;
-            //    }
-            //}
             }
 
         public decimal Prod
@@ -104,6 +81,19 @@ namespace IbragimovDGlazkiSave
             }
         }
 
+        public SolidColorBrush BackgroundStyle
+        {
+            get
+            {
+                if (Discount >= 25)
+                {
+                    return (SolidColorBrush)new BrushConverter().ConvertFromString("LightGreen"); 
+                } else
+                {
+                    return (SolidColorBrush)new BrushConverter().ConvertFromString("White");
+                }
+            }
+        }
 
         public virtual AgentType AgentType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

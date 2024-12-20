@@ -19,12 +19,6 @@ namespace IbragimovDGlazkiSave
         public int AgentID { get; set; }
         public System.DateTime SaleDate { get; set; }
 
-        // продажи за год(все) вывод.
-        // скидки подаравить
-        // сортировка по скидке
-        // selectionchanged listview
-        // окно пир изменении приоритета. максимальное приходит через параметр.
-
         public int ProductCount { get; set; }
 
         public decimal Stoimost
@@ -32,6 +26,14 @@ namespace IbragimovDGlazkiSave
             get
             {
                 return Product.MinCostForAgent * ProductCount;
+            }
+        }
+
+        public string ProductTitle
+        {
+            get
+            {
+                return Product.Title;
             }
         }
 

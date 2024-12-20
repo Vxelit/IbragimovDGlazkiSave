@@ -24,6 +24,7 @@
                      Width="300" FontSize="15" Margin="5"></TextBox>
             <ComboBox Name="ComboSort" SelectionChanged="ComboSort_SelectionChanged"
                       Width="300" FontSize="15" Margin="5">
+                <TextBlock>Сортировка</TextBlock>
                 <TextBlock>Наименование по возрастанию</TextBlock>
                 <TextBlock>Наименование по убыванию</TextBlock>
                 <TextBlock>Размер скидки по возрастанию</TextBlock>
@@ -49,7 +50,7 @@
         <ListView Name="AgentsListView" Grid.Row="2" HorizontalContentAlignment="Stretch" SelectionChanged="AgentsListView_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Background="{Binding BackgroundStyle}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="180"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>

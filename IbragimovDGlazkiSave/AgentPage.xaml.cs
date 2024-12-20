@@ -37,6 +37,7 @@ namespace IbragimovDGlazkiSave
             AgentsListView.ItemsSource = currentAgents;
 
             ComboFilter.SelectedIndex = 0;
+            ComboSort.SelectedIndex = 0;
 
             UpdateAgents();
         }
@@ -93,28 +94,34 @@ namespace IbragimovDGlazkiSave
 
 
             // сортировка
-            if (ComboSort.SelectedIndex == 0)
+
+            //if (ComboSort.SelectedIndex == 0)
+            //{
+
+            //}
+
+            if (ComboSort.SelectedIndex == 1)
             { // по возрастанию
                 currentAgents = currentAgents.OrderBy(p => p.Title).ToList();
             }
-            if (ComboSort.SelectedIndex == 1)
+            if (ComboSort.SelectedIndex == 2)
             { // по убыванию
                 currentAgents = currentAgents.OrderByDescending(p => p.Title).ToList();
             }
-            if (ComboSort.SelectedIndex == 2)
-            {
-
-            }
             if (ComboSort.SelectedIndex == 3)
             {
-
+                currentAgents = currentAgents.OrderBy(p => p.Discount).ToList();
             }
             if (ComboSort.SelectedIndex == 4)
+            {
+                currentAgents = currentAgents.OrderByDescending(p => p.Discount).ToList();
+            }
+            if (ComboSort.SelectedIndex == 5)
             {
                 currentAgents = currentAgents.OrderBy(p => p.Priority).ToList();
 
             }
-            if (ComboSort.SelectedIndex == 5)
+            if (ComboSort.SelectedIndex == 6)
             {
                 currentAgents = currentAgents.OrderByDescending(p => p.Priority).ToList();
 
@@ -281,7 +288,46 @@ namespace IbragimovDGlazkiSave
 
         private void PriorityChangeButton_Click(object sender, RoutedEventArgs e)
         {
+            var selectedAgents = AgentsListView.SelectedItems;
 
+            int maxPriority = 1;
+
+            foreach (Agent agent in selectedAgents)
+            {
+                if (maxPriority < agent.Priority)
+                {
+                    maxPriority = agent.Priority;
+                }
+            }
+
+            
+            AgentPriorityChangeWindow windowChange = new AgentPriorityChangeWindow(maxPriority);
+
+            windowChange.ShowDialog();
+
+            
+
+            if (AgentPriorityChangeWindow.isCloseStatusOk)
+            {
+
+                foreach (Agent agent in selectedAgents)
+                {
+                    agent.Priority = AgentPriorityChangeWindow.newPriority;
+                }
+
+                IbragimovDGlazkiSaveEntities.GetContext().SaveChanges();
+                MessageBox.Show("Изменения сохранены.");
+
+            } else
+            {
+                MessageBox.Show("Изменений не было.");
+            }
+
+
+
+
+
+            UpdateAgents();
         }
     }
 }

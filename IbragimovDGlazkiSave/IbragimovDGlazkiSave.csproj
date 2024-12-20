@@ -67,6 +67,9 @@
     <Compile Include="Agent.cs">
       <DependentUpon>IbragimovDModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AgentPriorityChangeWindow.xaml.cs">
+      <DependentUpon>AgentPriorityChangeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AgentPriorityHistory.cs">
       <DependentUpon>IbragimovDModel.tt</DependentUpon>
     </Compile>
@@ -99,6 +102,12 @@
     <Compile Include="ProductSale.cs">
       <DependentUpon>IbragimovDModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductSaleAddWindow.xaml.cs">
+      <DependentUpon>ProductSaleAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSaleHistory.xaml.cs">
+      <DependentUpon>ProductSaleHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProductType.cs">
       <DependentUpon>IbragimovDModel.tt</DependentUpon>
     </Compile>
@@ -113,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AgentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AgentPriorityChangeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,6 +157,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ProductSaleAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductSaleHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager.cs" />

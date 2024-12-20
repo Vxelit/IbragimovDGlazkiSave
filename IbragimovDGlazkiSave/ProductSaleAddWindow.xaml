@@ -1,0 +1,36 @@
+﻿<Window x:Class="IbragimovDGlazkiSave.ProductSaleAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IbragimovDGlazkiSave"
+        mc:Ignorable="d"
+        Title="ProductSaleAddWindow" Height="450" Width="800">
+    <Grid>
+
+
+        
+   
+        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Введите наименование товара:" Width="175" VerticalAlignment="Center"></TextBlock>
+
+                <ComboBox Name="ProductComboBox"  IsEditable="True" SelectionChanged="ProductComboBox_SelectionChanged" Margin="5" IsTextSearchEnabled="True" MinWidth="250"></ComboBox>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Выберите дату:" Width="175" VerticalAlignment="Center"></TextBlock>
+
+                <DatePicker Text="{Binding SaleDate}" Margin="5" Width="250"></DatePicker>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Введите количество:" Width="175" VerticalAlignment="Center"></TextBlock>
+                <TextBox Text="{Binding ProductCount}" Margin="5" MinWidth="250"></TextBox>
+
+            </StackPanel>
+            <Button Name="ConfirmButton" Content="Добавить" Click="ConfirmButton_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

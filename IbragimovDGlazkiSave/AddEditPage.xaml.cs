@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,10 +32,17 @@ namespace IbragimovDGlazkiSave
             InitializeComponent();
 
             if (SelectedAgent != null)
+            {
                 _currentAgent = SelectedAgent;
+            }
+
+            if (SelectedAgent == null)
+            {
+                HistorySaleBtn.Visibility = Visibility.Hidden;
+
+            }
 
             DataContext = _currentAgent;
-
 
 
             // мое!!!!
@@ -165,6 +173,11 @@ namespace IbragimovDGlazkiSave
         {
             var typeId = ComboType.SelectedIndex + 1;
             _currentAgent.AgentTypeID = typeId;
+        }
+
+        private void HistorySaleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new ProductSaleHistory(_currentAgent));
         }
     }
 }
